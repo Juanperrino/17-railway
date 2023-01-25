@@ -5,7 +5,7 @@ const d = document,
 
 const getCart = async (user) => {
     let response = await fetchApi().get(
-        `http://localhost:8099/api/carrito/?user=${user}`
+        `https://17-railway-production.up.railway.app/api/carrito/?user=${user}`
     );
     let productos = response[0].productos;
     cardsProducts.innerHTML = '';
@@ -37,14 +37,14 @@ const getCart = async (user) => {
 getCart(userId);
 const deleteProduct = async (idProduct, idCart) => {
     await fetchApi().del(
-        `http://localhost:8099/api/carrito/${idCart}/productos/${idProduct}`
+        `https://17-railway-production.up.railway.app/api/carrito/${idCart}/productos/${idProduct}`
     );
     setTimeout(() => {
         location.reload();
     }, 2000);
 };
 const finalizarCompra = async (userId) => {
-    await fetchApi().put(`http://localhost:8099/api/carrito/${userId}`);
+    await fetchApi().put(`https://17-railway-production.up.railway.app/api/carrito/${userId}`);
     setTimeout(() => {
         location.reload();
     }, 2000);

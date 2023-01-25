@@ -16,8 +16,8 @@ const getProduct = async (cepa) => {
     var cepa = params.get('cepa');
     let url;
     !cepa
-        ? (url = 'http://localhost:8099/api/productos')
-        : (url = `http://localhost:8099/api/productos?cepa=${cepa}`);
+        ? (url = 'https://17-railway-production.up.railway.app/api/productos')
+        : (url = `https://17-railway-production.up.railway.app/api/productos?cepa=${cepa}`);
     let response = await fetchApi().get(url);
     cardsProducts.innerHTML = '';
     response.forEach((product) => {
@@ -64,7 +64,7 @@ const editPost = async () => {
     };
 
     await fetchApi().put(
-        `http://localhost:8099/api/productos/${idInput.value}?admin=true`,
+        `https://17-railway-production.up.railway.app/api/productos/${idInput.value}?admin=true`,
         options
     );
     getProduct();
@@ -79,20 +79,20 @@ const newProduct = async () => {
         codigo: codigo.value,
     };
     await fetchApi().post(
-        'http://localhost:8099/api/productos?admin=true',
+        'https://17-railway-production.up.railway.app/api/productos?admin=true',
         options
     );
 };
 const delet = async (id) => {
     await fetchApi().del(
-        `http://localhost:8099/api/productos/${id}?admin=true`
+        `https://17-railway-production.up.railway.app/api/productos/${id}?admin=true`
     );
     location.reload();
 };
 
 const editForm = async (metodo, id) => {
     let response = await fetchApi().get(
-        `http://localhost:8099/api/productos/${id}`
+        `https://17-railway-production.up.railway.app/api/productos/${id}`
     );
     title.value = response.title;
     description.value = response.description;
@@ -106,12 +106,12 @@ const editForm = async (metodo, id) => {
 const postInCart = async (id) => {
     options.body = { _id: id };
     await fetchApi().post(
-        `http://localhost:8099/api/carrito/${carts.value}/productos`,
+        `https://17-railway-production.up.railway.app/api/carrito/${carts.value}/productos`,
         options
     );
 };
 const newCart = async () => {
-    await fetchApi().post('http://localhost:8099/api/carrito/');
+    await fetchApi().post('hhttps://17-railway-production.up.railway.app/api/carrito/');
     location.reload();
 };
 d.addEventListener('click', (e) => {
@@ -137,7 +137,7 @@ d.addEventListener('click', (e) => {
 const agregarCarrito = (user, product) => {
     options.body = { product, product };
     fetchApi().post(
-        `http://localhost:8099/api/carrito/${user}/productos`,
+        `https://17-railway-production.up.railway.app/api/carrito/${user}/productos`,
         options
     );
 };
